@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Kardia API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,9 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -225,19 +222,91 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#how-it-works" class="toc-h1 toc-link" data-title="How it Works">How it Works</a>
+          </li>
+          <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#base-url" class="toc-h1 toc-link" data-title="Base URL">Base URL</a>
+          </li>
+          <li>
+            <a href="#patients" class="toc-h1 toc-link" data-title="Patients">Patients</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#patient-object" class="toc-h2 toc-link" data-title="Patient Object">Patient Object</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#create-patient" class="toc-h2 toc-link" data-title="Create Patient">Create Patient</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#get-patient" class="toc-h2 toc-link" data-title="Get Patient">Get Patient</a>
+                  </li>
+                  <li>
+                    <a href="#delete-patient" class="toc-h2 toc-link" data-title="Delete Patient">Delete Patient</a>
+                  </li>
+                  <li>
+                    <a href="#export-patient" class="toc-h2 toc-link" data-title="Export Patient">Export Patient</a>
+                  </li>
+                  <li>
+                    <a href="#get-connection-code" class="toc-h2 toc-link" data-title="Get Connection Code">Get Connection Code</a>
+                  </li>
+                  <li>
+                    <a href="#get-patient-recordings" class="toc-h2 toc-link" data-title="Get Patient Recordings">Get Patient Recordings</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-patients" class="toc-h2 toc-link" data-title="Get All Patients">Get All Patients</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#ecg-recordings" class="toc-h1 toc-link" data-title="ECG Recordings">ECG Recordings</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ecg-object" class="toc-h2 toc-link" data-title="ECG Object">ECG Object</a>
+                  </li>
+                  <li>
+                    <a href="#ecg-data-object" class="toc-h2 toc-link" data-title="ECG Data Object">ECG Data Object</a>
+                  </li>
+                  <li>
+                    <a href="#ecg-samples-object" class="toc-h2 toc-link" data-title="ECG Samples Object">ECG Samples Object</a>
+                  </li>
+                  <li>
+                    <a href="#single-ecg" class="toc-h2 toc-link" data-title="Single ECG">Single ECG</a>
+                  </li>
+                  <li>
+                    <a href="#single-ecg-pdf" class="toc-h2 toc-link" data-title="Single ECG PDF">Single ECG PDF</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-recordings" class="toc-h2 toc-link" data-title="Get All Recordings">Get All Recordings</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-screening-station-recordings" class="toc-h2 toc-link" data-title="Get All Screening Station Recordings">Get All Screening Station Recordings</a>
+                  </li>
+                  <li>
+                    <a href="#recordings-object-2" class="toc-h2 toc-link" data-title="Recordings Object">Recordings Object</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#kardia-mobile-users" class="toc-h1 toc-link" data-title="Kardia Mobile Users">Kardia Mobile Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-user" class="toc-h2 toc-link" data-title="Create User">Create User</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#set-callback-url" class="toc-h2 toc-link" data-title="Set callback URL">Set callback URL</a>
+                  </li>
+                  <li>
+                    <a href="#get-callback-url" class="toc-h2 toc-link" data-title="Get callback URL">Get callback URL</a>
+                  </li>
+                  <li>
+                    <a href="#get-callback-logs" class="toc-h2 toc-link" data-title="Get callback logs">Get callback logs</a>
                   </li>
               </ul>
           </li>
@@ -245,199 +314,864 @@
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>The Kardia API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.</p>
+<h1 id='how-it-works'>How it Works</h1>
+<p>Kardia Pro facilitates a connection between a clinician’s Kardia Pro account and their selected patients. Patients are provisioned with a unique code that connects their Kardia application specifically to their clinician or service and allows all ECG recordings captured via Kardia Mobile to be accessible to the clinician via the Kardia Pro API.</p>
+<h1 id='authentication'>Authentication</h1><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients <span class="se">\</span>
+  -u YOUR-API-KEY:
+<span class="c"># The colon prevents curl from asking for a password.</span>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+</code></pre>
+<p>The Kardia API uses API keys to authenticate requests. APIs within the Kardia platform require the use of HTTP Basic Authentication, constructed from a valid API key as the username and empty password combination.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Example Requests </p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get your API Key</span>
+curl -X POST https://api.kardia.com/v1/apikey <span class="se">\</span>
+  -d <span class="nv">email</span><span class="o">=</span>YOUR_EMAIL <span class="se">\</span>
+  -d <span class="nv">password</span><span class="o">=</span>YOUR_PASSWORD
+</code></pre>
+<p>To access your API Key, send a <code>POST</code> request with your Kardia Pro <code>email</code> and <code>password</code> as url encoded form params to <code>/v1/apikey</code>.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Generate a new API Key</span>
+curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
+  -u YOUR-API-KEY:
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3test974-cd11-48c3-a0dd-621test8test"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p>To generate a new API Key, send a <code>POST</code> request to <code>/v1/apikey/new</code> using your current API Key.</p>
+<h1 id='base-url'>Base URL</h1>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Region</th>
+<th>Host</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>US</td>
+<td>https://api.kardia.com</td>
+</tr>
+<tr>
+<td>EU</td>
+<td>https://eu-api.kardia.com</td>
+</tr>
+</tbody></table>
+<h1 id='patients'>Patients</h1><h3 id='patient-object'>Patient Object</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>id</td>
+<td>string</td>
+<td>The patient&#39;s unique random ID</td>
+</tr>
+<tr>
+<td>mrn</td>
+<td>string</td>
+<td>The patient&#39;s medical record number</td>
+</tr>
+<tr>
+<td>dob</td>
+<td>string</td>
+<td>The patient&#39;s date of birth</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>The patient&#39;s email address</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td>string</td>
+<td>The patient&#39;s first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td>string</td>
+<td>The patient&#39;s last name</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>int</td>
+<td>The patient&#39;s sex as ISO/IEC5218</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h2 id='create-patient'>Create Patient</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients <span class="se">\</span>
+  -u YOUR-API-KEY: <span class="se">\</span>
+  -d <span class="nv">mrn</span><span class="o">=</span>JS-20000721 <span class="se">\</span>
+  -d <span class="nv">dob</span><span class="o">=</span>2000-07-21 <span class="se">\</span>
+  -d <span class="nv">email</span><span class="o">=</span>joe@example.com <span class="se">\</span>
+  -d <span class="nv">firstname</span><span class="o">=</span>Joe <span class="se">\</span>
+  -d <span class="nv">lastname</span><span class="o">=</span>Smith <span class="se">\</span>
+  -d <span class="nv">sex</span><span class="o">=</span>1
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mrn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JS-20000721"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-03-12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joe@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p>To create a patient, send a <code>POST</code> request to <code>/v1/patients</code>.</p>
+<h3 id='arguments'>Arguments</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>mrn</td>
+<td>string</td>
+<td>Yes</td>
+<td>The patient&#39;s medical record number</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Yes</td>
+<td>The patient&#39;s email address</td>
+</tr>
+<tr>
+<td>dob</td>
+<td>string</td>
+<td>Yes</td>
+<td>The patient&#39;s date of birth as YYYY-MM-DD</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td>string</td>
+<td>No</td>
+<td>The patient&#39;s first name</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td>string</td>
+<td>No</td>
+<td>The patient&#39;s last name</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>int</td>
+<td>No</td>
+<td>The patient&#39;s sex as ISO/IEC 5218</td>
 </tr>
 </tbody></table>
+<h2 id='get-patient'>Get Patient</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i <span class="se">\</span>
+ -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: <span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span>,
+  <span class="s2">"mrn"</span>: <span class="s2">"JMJ-19810712"</span>,
+  <span class="s2">"dob"</span>: <span class="s2">"1970-03-12"</span>,
+  <span class="s2">"email"</span>: <span class="s2">"joe@example.com"</span>,
+  <span class="s2">"firstname"</span>: <span class="s2">"Joe"</span>,
+  <span class="s2">"lastname"</span>: <span class="s2">"Smith"</span>,
+  <span class="s2">"sex"</span>: 0
+<span class="o">}</span>
+</code></pre>
+<p>Responds to <code>GET</code> requests to <code>/v1/patients/:id</code> and returns a single patient object.</p>
+<h2 id='delete-patient'>Delete Patient</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i <span class="se">\</span>
+ -u YOUR-API-KEY:
+</code></pre>
+<p>Responds to <code>DELETE</code> requests to <code>/v1/patients/:id</code>. Successful requests return an HTTP status <code>202 Accepted</code>. Developers must request Data Controller access for this functionality.</p>
+<h2 id='export-patient'>Export Patient</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/export <span class="se">\</span>
+ -u YOUR-API-KEY:
+</code></pre>
+<p>Responds to <code>GET</code> requests to <code>/v1/patients/:id/export</code>. Exports are queued and email sent to the API key owner once the export is ready for download. Returns an HTTP <code>202 Accepted</code>on success. Developers must request Data Controller access for this functionality.</p>
+<h2 id='get-connection-code'>Get Connection Code</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/code <span class="se">\</span>
+ -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"code"</span>: <span class="s2">"LQYP-MSAK-NPJR"</span>,
+  <span class="s2">"status"</span>: <span class="s2">"connected"</span>
+<span class="o">}</span>
+</code></pre>
+<p>Responds to <code>GET</code> requests to <code>/v1/patients/:id/code</code> and returns a valid connection code for the given patient and the status of the connection, either <code>connected</code> or <code>pending</code>.</p>
+<h2 id='get-patient-recordings'>Get Patient Recordings</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/recordings <span class="se">\</span>
+ -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"totalCount"</span>: 200,
+  <span class="s2">"recordings"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: <span class="s2">"3wde1eem9vy4y1a0rv3y98u2a"</span>,
+      <span class="s2">"patientID"</span>: <span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span>,
+      <span class="s2">"duration"</span>: 30000,
+      <span class="s2">"heartRate"</span>: 65,  
+      <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>
+      <span class="s2">"recordedAt"</span>: <span class="s2">"2008-09-15T15:53:00+05:00"</span>
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"pageInfo"</span>: <span class="o">{</span>
+    <span class="s2">"startCursor"</span>: <span class="s2">"c3RhcnRDdXJzb3I="</span>,
+    <span class="s2">"endCursor"</span>: <span class="s2">"ZW5kQ3Vyc29yc2Rh="</span>,
+    <span class="s2">"hasNextPage"</span>: <span class="nb">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Responds to <code>GET</code> requests to <code>/v1/patients/:id/recordings</code> and returns an array of ECG recordings for the given patient.</p>
+
+<p><strong>Querystring parameters</strong></p>
+
+<p><code>limit</code> A limit on the number of objects to be returned. Limit can range between 1 and 500, and the default is 100.</p>
+
+<p><code>start</code> The cursor used to return recordings after the <code>startCursor</code> or <code>endCursor</code> cursor, and returning at most <code>limit</code> recordings.</p>
+<h3 id='recordings-object'>Recordings Object</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalCount</td>
+<td>int</td>
+<td>The total number of patients</td>
+</tr>
+<tr>
+<td>recordings</td>
+<td>array</td>
+<td>An array of recording data</td>
+</tr>
+<tr>
+<td>pageInfo</td>
+<td>object</td>
+<td>Pagination information</td>
+</tr>
+</tbody></table>
+<h3 id='page-info-object'>Page Info Object</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>startCursor</td>
+<td>string</td>
+<td>The cursor for the first recording in the page</td>
+</tr>
+<tr>
+<td>endCursor</td>
+<td>string</td>
+<td>the cursor for the last recording in the page</td>
+</tr>
+<tr>
+<td>hasNextPage</td>
+<td>bool</td>
+<td>True if there is another page of data</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-patients'>Get All Patients</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients?limit<span class="o">=</span>50&amp;start<span class="o">=</span><span class="nv">ZW5kQ3Vyc29yc2Rh</span><span class="o">=</span> <span class="se">\</span>
+  -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"totalCount"</span>: 200,
+    <span class="s2">"patients"</span>: <span class="o">[{</span>
+      <span class="s2">"id"</span>: <span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span>,
+      <span class="s2">"mrn"</span>: <span class="s2">"JS-19810712"</span>,
+      <span class="s2">"dob"</span>: <span class="s2">"1970-03-12"</span>,
+      <span class="s2">"email"</span>: <span class="s2">"joe@example.com"</span>,
+      <span class="s2">"firstname"</span>: <span class="s2">"Joe"</span>,
+      <span class="s2">"lastname"</span>: <span class="s2">"Smith"</span>,
+      <span class="s2">"sex"</span>: 0
+    <span class="o">}]</span>,
+    <span class="s2">"pageInfo"</span>: <span class="o">{</span>
+      <span class="s2">"startCursor"</span>: <span class="s2">"c3RhcnRDdXJzb3I="</span>,
+      <span class="s2">"endCursor"</span>: <span class="s2">"ZW5kQ3Vyc29yc2Rh="</span>,
+      <span class="s2">"hasNextPage"</span>: <span class="nb">true</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Responds to <code>GET</code> requests to <code>/v1/patients</code> and returns a list of patients with the most recent created patient first.</p>
+
+<p><strong>Querystring parameters</strong></p>
+
+<p><code>limit</code> A limit on the number of objects to be returned. Limit can range between 1 and 500, and the default is 100.</p>
+
+<p><code>start</code> The cursor used to return patients after the <code>startCursor</code> or <code>endCursor</code> cursor, and returning at most <code>limit</code> patients.</p>
+<h3 id='patients-object'>Patients Object</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalCount</td>
+<td>int</td>
+<td>The total number of patients</td>
+</tr>
+<tr>
+<td>patients</td>
+<td>array</td>
+<td>An array of <code>Patient</code> objects</td>
+</tr>
+<tr>
+<td>pageInfo</td>
+<td>object</td>
+<td>Pagination information</td>
+</tr>
+</tbody></table>
+<h3 id='page-info-object-2'>Page Info Object</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>startCursor</td>
+<td>string</td>
+<td>The cursor for the first patient in the page</td>
+</tr>
+<tr>
+<td>endCursor</td>
+<td>string</td>
+<td>the cursor for the last patient in the page</td>
+</tr>
+<tr>
+<td>hasNextPage</td>
+<td>bool</td>
+<td>True if there is another page of data</td>
+</tr>
+</tbody></table>
+<h1 id='ecg-recordings'>ECG Recordings</h1><h2 id='ecg-object'>ECG Object</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>The patient&#39;s unique random ID</td>
+</tr>
+<tr>
+<td>patientID</td>
+<td>string</td>
+<td>The unique patient identifier</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>int</td>
+<td>The duration of the ECG recording in milliseconds</td>
+</tr>
+<tr>
+<td>heartRate</td>
+<td>int</td>
+<td>The average heart rate</td>
+</tr>
+<tr>
+<td>note</td>
+<td>string</td>
+<td>The patient supplied note associated with the ECG</td>
+</tr>
+<tr>
+<td>algorithmDetermination</td>
+<td>string</td>
+<td>Represents the output of the AliveCor ECG algorithms, the allowable values are <code>normal</code>, <code>afib</code>, <code>unclassified</code>, <code>bradycardia</code>, <code>tachycardia</code>, <code>too_short</code>, <code>too_long</code>, <code>unreadable</code>, and <code>no_analysis</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>The raw and enhanced filterred ECG data samples</td>
+</tr>
+<tr>
+<td>recordedAt</td>
+<td>string</td>
+<td>The date time the ECG was recorded</td>
+</tr>
+</tbody></table>
+<h2 id='ecg-data-object'>ECG Data Object</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>frequency</td>
+<td>int</td>
+<td>The frequency in hertz of the ECG recording, i.e. 300Hz</td>
+</tr>
+<tr>
+<td>mainsFrequency</td>
+<td>int</td>
+<td>The mains frequency either 50 (e.g. Europe) or 60 (e.g. America) Hz.</td>
+</tr>
+<tr>
+<td>amplitudeResolution</td>
+<td>int</td>
+<td>The number of nanovolts corresponding to each sample unit.</td>
+</tr>
+<tr>
+<td>samples</td>
+<td>object</td>
+<td>The ECG data samples</td>
+</tr>
+</tbody></table>
+<h2 id='ecg-samples-object'>ECG Samples Object</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>leadI</td>
+<td>array</td>
+<td>The Lead 1 data samples at the specified sampling frequency, in ADC units. To convert to millivolts, divide these samples by (1e6 / amplitudeResolution).</td>
+</tr>
+</tbody></table>
+<h2 id='single-ecg'>Single ECG</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a <span class="se">\</span>
+  -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: <span class="s2">"3wde1eem9vy4y1a0rv3y98u2a"</span>,
+  <span class="s2">"patientID"</span>: <span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span>,
+  <span class="s2">"algorithmDetermination"</span>: <span class="s2">"normal"</span>,
+  <span class="s2">"duration"</span>: 30000,
+  <span class="s2">"heartRate"</span>: 65,  
+  <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>
+  <span class="s2">"recordedAt"</span>: <span class="s2">"2008-09-15T15:53:00+05:00"</span>
+  <span class="s2">"data"</span>: <span class="o">{</span>
+    <span class="s2">"raw"</span>: <span class="o">{</span>
+      <span class="s2">"frequency"</span>: 300,
+      <span class="s2">"mains_freq"</span>: 60,
+      <span class="s2">"samples"</span>: <span class="o">{</span>
+        <span class="s2">"leadI"</span>: <span class="o">[</span>
+          397,
+          -262,
+          -426,
+          -284,
+          286,
+          391,
+          -45,
+          -249,
+          -30,
+          566,
+          515,
+          204,
+          -138,
+          -30,
+          491,
+          572,
+          103,
+          -187,
+          -62,
+          322,
+          ...     
+        <span class="o">]</span>,
+        <span class="s2">"leadII"</span>: <span class="o">[</span>...],
+        <span class="s2">"leadIII"</span>: <span class="o">[</span>...],
+        <span class="s2">"AVR"</span>: <span class="o">[</span>...],
+        <span class="s2">"AVL"</span>: <span class="o">[</span>...],
+        <span class="s2">"AVF: [...]
+      }, 
+      "</span>numLeads<span class="s2">": 6
+    },
+    "</span>enhanced<span class="s2">": {
+      "</span>frequency<span class="s2">": 300,
+      "</span>mains_freq<span class="s2">": 60,
+      "</span>samples<span class="s2">": {
+        "</span>lead_I<span class="s2">": [
+          397,
+          -262,
+          -426,
+          -284,
+          286,
+          391,
+          -45,
+          -249,
+          -30,
+          566,
+          515,
+          204,
+          -138,
+          -30,
+          491,
+          572,
+          103,
+          -187,
+          -62,
+          322,
+          ...     
+        ],
+        "</span>leadII<span class="s2">": [...],
+        "</span>leadIII<span class="s2">": [...],
+        "</span>AVR<span class="s2">": [...],
+        "</span>AVL<span class="s2">": [...],
+        "</span>AVF: <span class="o">[</span>...]
+      <span class="o">}</span>, 
+      <span class="s2">"numLeads"</span>: 6
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>To get a single ECG for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id</code> </p>
+<h2 id='single-ecg-pdf'>Single ECG PDF</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a.pdf <span class="se">\</span>
+  -u 7863674b-1919-432b-90d5-838fb8207d3f:
+</code></pre>
+<p>To get a single ECG PDF for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id.pdf</code> </p>
+<h2 id='get-all-recordings'>Get All Recordings</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/recordings <span class="se">\</span>
+ -u 7863674b-1919-432b-90d5-838fb8207d3f:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"totalCount"</span>: 200,
+   <span class="s2">"recordings"</span>: <span class="o">[{</span>
+      <span class="s2">"id"</span>: <span class="s2">"3wde1eem9vy4y1a0rv3y98u2a"</span>,
+      <span class="s2">"patientID"</span>: <span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span>,
+      <span class="s2">"algorithmDetermination"</span>: <span class="s2">"normal"</span>,
+      <span class="s2">"duration"</span>: 30000,
+      <span class="s2">"heartRate"</span>: 65,  
+      <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>
+      <span class="s2">"recordedAt"</span>: <span class="s2">"2008-09-15T15:53:00+05:00"</span>
+  <span class="o">}]</span>,
+  <span class="s2">"pageInfo"</span>: <span class="o">{</span>
+    <span class="s2">"startCursor"</span>: <span class="s2">"c3RhcnRDdXJzb3I="</span>,
+    <span class="s2">"endCursor"</span>: <span class="s2">"ZW5kQ3Vyc29yc2Rh="</span>,
+    <span class="s2">"hasNextPage"</span>: <span class="nb">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Responds to <code>GET</code> requests to <code>/v1/recordings</code> and returns an array of ECG&#39;s across all patients taken in the Kardia Mobile App. This will not include screening station recordings.</p>
+
+<p><strong>Querystring parameters</strong></p>
+
+<p><code>limit</code> A limit on the number of objects to be returned. Limit can range between 1 and 500, and the default is 100.</p>
+
+<p><code>start</code> The cursor used to return recordings after the <code>startCursor</code> or <code>endCursor</code> cursor, and returning at most <code>limit</code> recordings.</p>
+<h2 id='get-all-screening-station-recordings'>Get All Screening Station Recordings</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/screening/recordings <span class="se">\</span>
+ -u 7863674b-1919-432b-90d5-838fb8207d3f:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"totalCount"</span>: 200,
+   <span class="s2">"recordings"</span>: <span class="o">[{</span>
+      <span class="s2">"id"</span>: <span class="s2">"3wde1eem9vy4y1a0rv3y98u2a"</span>,
+      <span class="s2">"patientID"</span>: <span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span>,
+      <span class="s2">"algorithmDetermination"</span>: <span class="s2">"normal"</span>,
+      <span class="s2">"duration"</span>: 30000,
+      <span class="s2">"heartRate"</span>: 65,  
+      <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>
+      <span class="s2">"recordedAt"</span>: <span class="s2">"2008-09-15T15:53:00+05:00"</span>
+  <span class="o">}]</span>,
+  <span class="s2">"pageInfo"</span>: <span class="o">{</span>
+    <span class="s2">"startCursor"</span>: <span class="s2">"c3RhcnRDdXJzb3I="</span>,
+    <span class="s2">"endCursor"</span>: <span class="s2">"ZW5kQ3Vyc29yc2Rh="</span>,
+    <span class="s2">"hasNextPage"</span>: <span class="nb">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Responds to <code>GET</code> requests to <code>/v1/screening/recordings</code> and returns an array of ECG&#39;s taken at Kardia Screening Stations.</p>
+
+<p><strong>Querystring parameters</strong></p>
+
+<p><code>limit</code> A limit on the number of objects to be returned. Limit can range between 1 and 500, and the default is 100.</p>
+
+<p><code>start</code> The cursor used to return recordings after the <code>startCursor</code> or <code>endCursor</code> cursor, and returning at most <code>limit</code> recordings.</p>
+<h2 id='recordings-object-2'>Recordings Object</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalCount</td>
+<td>int</td>
+<td>The total number of recordings</td>
+</tr>
+<tr>
+<td>recordings</td>
+<td>array</td>
+<td>An array of recording data</td>
+</tr>
+<tr>
+<td>pageInfo</td>
+<td>object</td>
+<td>Pagination information</td>
+</tr>
+<tr>
+<td>startCursor</td>
+<td>string</td>
+<td>The cursor for the first recording in the page</td>
+</tr>
+<tr>
+<td>endCursor</td>
+<td>string</td>
+<td>the cursor for the last recording in the page</td>
+</tr>
+<tr>
+<td>hasNextPage</td>
+<td>bool</td>
+<td>True if there is another page of data</td>
+</tr>
+</tbody></table>
+<h1 id='kardia-mobile-users'>Kardia Mobile Users</h1><h2 id='create-user'>Create User</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/users <span class="se">\</span>
+  -u YOUR-API-KEY: <span class="se">\</span>
+  -d <span class="nv">email</span><span class="o">=</span>joe@example.com <span class="se">\</span>
+  -d <span class="nv">password</span><span class="o">=</span>5up3R53Cur3 <span class="se">\</span>
+  -d <span class="nv">countryCode</span><span class="o">=</span>us <span class="se">\</span>
+  -d <span class="nv">patientId</span><span class="o">=</span>wNSEDeLOEPQE5rznkJmwbnjpxfdst93i
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"requestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"q1ATFmh7OShS2Dmd1cVAb6boqkrp7gif"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The API allows developers to create Kardia Mobile users that will be automatically connected to the Kardia Pro account. To create a Kardia Mobile user, send a <code>POST</code> request to <code>/v1/users</code>.</p>
+<h3 id='arguments-2'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Yes</td>
+<td>The Kardia Mobile user&#39;s email address.</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Yes</td>
+<td>The Kardia Mobile user&#39;s password</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>string</td>
+<td>Yes</td>
+<td>The ISO 3166 Alpha-2 country code</td>
+</tr>
+<tr>
+<td>patientId</td>
+<td>string</td>
+<td>Yes</td>
+<td>The patient&#39;s unique identifier.</td>
+</tr>
+</tbody></table>
+<h1 id='webhooks'>Webhooks</h1>
+<p>Webhooks are a system of automated notifications indicating that an event has occurred for your team. Rather than requiring you to pull information via our API, webhooks push information to your destination when important events occur. Webhooks notify the following events.</p>
+
+<ul>
+<li>New recordings</li>
+<li>Patient connections</li>
+<li>Patient disconnects</li>
+</ul>
+<h2 id='set-callback-url'>Set callback URL</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://api.kardia.com/v1/callback <span class="se">\</span>
+  -u YOUR-API-KEY: <span class="se">\</span>
+  -d <span class="nv">url</span><span class="o">=</span>https://www.example.com/webhooks
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Lets you assign a callback URL for POST notifications. Make sure to assign a publicly accessible URL for your callback service. Responds to <code>PUT</code> requests to <code>/v1/callback</code>.</p>
+<h2 id='get-callback-url'>Get callback URL</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/callback <span class="se">\</span>
+  -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='get-callback-logs'>Get callback logs</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/logs <span class="se">\</span>
+  -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"logs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newRecording"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-13T00:00:01Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed to send new recording to callback url"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newRecording"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-13T00:00:00Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"pageInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"startCursor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y3Vyc29yMjAxOS0wNS0xM1QwMDowMDowMVo="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endCursor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y3Vyc29yMjAxOS0wNS0xM1QwMDowMDowMFo="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Returns a paged list of logs. Send a <code>GET</code> request to <code>/v1/logs</code>.</p>
+
+<p><strong>Querystring parameters</strong></p>
+
+<p><code>limit</code> A limit on the number of objects to be returned. Limit can range between 1 and 500, and the default is 100.</p>
+
+<p><code>start</code> The cursor used to return logs after the <code>startCursor</code> or <code>endCursor</code> cursor, and returning at most <code>limit</code> logs..</p>
 <h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
+<p>Error objects provide additional information about problems encountered while performing an operation. Error objects are returned as an array keyed by errors in the top level of a JSON document.</p>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>An error object MAY have the following members:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>A unique identifier for this particular occurrence of the problem</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>The HTTP status code applicable to this problem, expressed as a string value.</td>
+</tr>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>An application-specific error code, expressed as a string value.</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>A short, human-readable summary of the problem.</td>
+</tr>
+<tr>
+<td>detail</td>
+<td>string</td>
+<td>A human-readable explanation specific to this occurrence of the problem.</td>
+</tr>
+</tbody></table>
 
 <table><thead>
 <tr>
@@ -454,32 +1188,8 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <td>Unauthorized -- Your API key is wrong.</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Not Found -- The specified resource could not be found.</td>
 </tr>
 <tr>
 <td>500</td>
@@ -495,9 +1205,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
