@@ -284,6 +284,9 @@
                     <a href="#get-all-screening-station-recordings" class="toc-h2 toc-link" data-title="Get All Screening Station Recordings">Get All Screening Station Recordings</a>
                   </li>
                   <li>
+                    <a href="#set-qt-analysis-measurements" class="toc-h2 toc-link" data-title="Set QT Analysis Measurements">Set QT Analysis Measurements</a>
+                  </li>
+                  <li>
                     <a href="#recordings-object-2" class="toc-h2 toc-link" data-title="Recordings Object">Recordings Object</a>
                   </li>
               </ul>
@@ -304,6 +307,12 @@
                   </li>
                   <li>
                     <a href="#get-callback-url" class="toc-h2 toc-link" data-title="Get callback URL">Get callback URL</a>
+                  </li>
+                  <li>
+                    <a href="#set-qt-analysis-callback-url" class="toc-h2 toc-link" data-title="Set QT Analysis Callback URL">Set QT Analysis Callback URL</a>
+                  </li>
+                  <li>
+                    <a href="#get-qt-analysis-callback-url" class="toc-h2 toc-link" data-title="Get QT Analysis Callback URL">Get QT Analysis Callback URL</a>
                   </li>
                   <li>
                     <a href="#get-callback-logs" class="toc-h2 toc-link" data-title="Get callback logs">Get callback logs</a>
@@ -966,6 +975,28 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <p><code>limit</code> A limit on the number of objects to be returned. Limit can range between 1 and 500, and the default is 100.</p>
 
 <p><code>start</code> The cursor used to return recordings after the <code>startCursor</code> or <code>endCursor</code> cursor, and returning at most <code>limit</code> recordings.</p>
+<h2 id='set-qt-analysis-measurements'>Set QT Analysis Measurements</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request POST https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a/qt <span class="se">\</span>
+ -u 7863674b-1919-432b-90d5-838fb8207d3f: <span class="se">\</span>
+ --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+ --data <span class="s1">'{"qt": 1.45,"rr": 1.21,"qtcb": -5.12,"qtcf": 145}'</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordingID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3wde1eem9vy4y1a0rv3y98u2a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"qt"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.45</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rr"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.21</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"qtcb"</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.12</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"qtcf"</span><span class="p">:</span><span class="w"> </span><span class="mi">145</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"measurementID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IOyFM8PTUW7DEw2UAircc1pfvsh2rxdd"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Responds to <code>POST</code> requests to <code>/v1/recordings/:recordingId/qt</code> and returns the created qt measurement object.</p>
 <h2 id='recordings-object-2'>Recordings Object</h2>
 <table><thead>
 <tr>
@@ -1065,8 +1096,19 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <li>New recordings</li>
 <li>Patient connections</li>
 <li>Patient disconnects</li>
+<li>New QT Analysis Requests</li>
 </ul>
-<h2 id='set-callback-url'>Set callback URL</h2>
+
+<p>The Kardia server will send a post to your set url with the following body:</p>
+
+<blockquote>
+<p>Example Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w">   </span><span class="s2">"qtAnalysis"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recordingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123recordingIDTest"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='set-callback-url'>Set callback URL</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
@@ -1087,6 +1129,35 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/callback <span class="se">\</span>
+  -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='set-qt-analysis-callback-url'>Set QT Analysis Callback URL</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://api.kardia.com/v1/qtCallback <span class="se">\</span>
+  -u YOUR-API-KEY: <span class="se">\</span>
+  -d <span class="nv">url</span><span class="o">=</span>https://www.example.com/webhooks
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Lets you assign a callback URL for POST notifications. Make sure to assign a publicly accessible URL for your callback service. Responds to <code>PUT</code> requests to <code>/v1/qtCallback</code>.</p>
+<h2 id='get-qt-analysis-callback-url'>Get QT Analysis Callback URL</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/qtCallback <span class="se">\</span>
   -u YOUR-API-KEY:
 </code></pre>
 <blockquote>
