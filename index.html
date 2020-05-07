@@ -252,6 +252,9 @@
                     <a href="#get-connection-code" class="toc-h2 toc-link" data-title="Get Connection Code">Get Connection Code</a>
                   </li>
                   <li>
+                    <a href="#disconnect-patient-connection" class="toc-h2 toc-link" data-title="Disconnect patient connection">Disconnect patient connection</a>
+                  </li>
+                  <li>
                     <a href="#get-patient-recordings" class="toc-h2 toc-link" data-title="Get Patient Recordings">Get Patient Recordings</a>
                   </li>
                   <li>
@@ -545,6 +548,19 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <span class="o">}</span>
 </code></pre>
 <p>Responds to <code>GET</code> requests to <code>/v1/patients/:id/code</code> and returns a valid connection code for the given patient and the status of the connection, either <code>connected</code> or <code>pending</code>.</p>
+<h2 id='disconnect-patient-connection'>Disconnect patient connection</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/disconnect <span class="se">\</span>
+ -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{}</span>
+</code></pre>
+<p>Responds to <code>POST</code> requests to <code>/v1/patients/:id/disconnect</code> and terminates a patient&#39;s connection. Returns an empty response if successful.</p>
 <h2 id='get-patient-recordings'>Get Patient Recordings</h2>
 <blockquote>
 <p>Example Request</p>
