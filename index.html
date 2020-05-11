@@ -342,7 +342,7 @@
 <p>The Kardia API uses API keys to authenticate requests. APIs within the Kardia platform require the use of HTTP Basic Authentication, constructed from a valid API key as the username and empty password combination.</p>
 
 <blockquote>
-<p>Example Requests </p>
+<p>Example Requests</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># Get your API Key</span>
 curl -X POST https://api.kardia.com/v1/apikey <span class="se">\</span>
@@ -871,7 +871,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
         <span class="s2">"AVR"</span>: <span class="o">[</span>...],
         <span class="s2">"AVL"</span>: <span class="o">[</span>...],
         <span class="s2">"AVF"</span>: <span class="o">[</span>...]
-      <span class="o">}</span>, 
+      <span class="o">}</span>,
       <span class="s2">"numLeads"</span>: 6
     <span class="o">}</span>,
     <span class="s2">"enhanced"</span>: <span class="o">{</span>
@@ -906,13 +906,13 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
         <span class="s2">"AVR"</span>: <span class="o">[</span>...],
         <span class="s2">"AVL"</span>: <span class="o">[</span>...],
         <span class="s2">"AVF"</span>: <span class="o">[</span>...]
-      <span class="o">}</span>, 
+      <span class="o">}</span>,
       <span class="s2">"numLeads"</span>: 6
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
-<p>To get a single ECG for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id</code> </p>
+<p>To get a single ECG for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id</code></p>
 <h2 id='single-ecg-pdf'>Single ECG PDF</h2>
 <blockquote>
 <p>Example Request</p>
@@ -920,7 +920,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a.pdf <span class="se">\</span>
   -u 7863674b-1919-432b-90d5-838fb8207d3f:
 </code></pre>
-<p>To get a single ECG PDF for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id.pdf</code> </p>
+<p>To get a single ECG PDF for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id.pdf</code></p>
 <h2 id='get-all-recordings'>Get All Recordings</h2>
 <blockquote>
 <p>Example Request</p>
@@ -998,7 +998,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <pre class="highlight shell tab-shell"><code>curl --request POST https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a/qt <span class="se">\</span>
  -u 7863674b-1919-432b-90d5-838fb8207d3f: <span class="se">\</span>
  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
- --data <span class="s1">'{"qt": 1.45,"rr": 1.21,"qtcb": -5.12,"qtcf": 145}'</span>
+ --data <span class="s1">'{"qt": 1.45,"rr": 1.21,"qtcb": -5.12,"qtcf": 145, "error": "any error message", "errorType": "poorQuality"}'</span>
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1009,10 +1009,14 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
     </span><span class="s2">"rr"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.21</span><span class="p">,</span><span class="w">
     </span><span class="s2">"qtcb"</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.12</span><span class="p">,</span><span class="w">
     </span><span class="s2">"qtcf"</span><span class="p">:</span><span class="w"> </span><span class="mi">145</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"measurementID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IOyFM8PTUW7DEw2UAircc1pfvsh2rxdd"</span><span class="w">
+    </span><span class="s2">"measurementID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IOyFM8PTUW7DEw2UAircc1pfvsh2rxdd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any error message"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"poorQuality"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Responds to <code>POST</code> requests to <code>/v1/recordings/:recordingId/qt</code> and returns the created qt measurement object.</p>
+<p>Responds to <code>POST</code> requests to <code>/v1/recordings/:recordingId/qt</code> and returns the created qt measurement object.
+A qt measurement may contain an optional error message, which will require an errorType if an error message
+is specified. Valid error types are <code>poorQuality</code>, <code>undeterminedRhythm</code>, and <code>other</code></p>
 <h2 id='recordings-object-2'>Recordings Object</h2>
 <table><thead>
 <tr>
