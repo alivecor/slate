@@ -312,10 +312,16 @@
                     <a href="#get-callback-url" class="toc-h2 toc-link" data-title="Get callback URL">Get callback URL</a>
                   </li>
                   <li>
+                    <a href="#callback-json-examples" class="toc-h2 toc-link" data-title="Callback JSON examples">Callback JSON examples</a>
+                  </li>
+                  <li>
                     <a href="#set-qt-analysis-callback-url" class="toc-h2 toc-link" data-title="Set QT Analysis Callback URL">Set QT Analysis Callback URL</a>
                   </li>
                   <li>
                     <a href="#get-qt-analysis-callback-url" class="toc-h2 toc-link" data-title="Get QT Analysis Callback URL">Get QT Analysis Callback URL</a>
+                  </li>
+                  <li>
+                    <a href="#qt-callback-json-example" class="toc-h2 toc-link" data-title="QT callback JSON example">QT callback JSON example</a>
                   </li>
                   <li>
                     <a href="#get-callback-logs" class="toc-h2 toc-link" data-title="Get callback logs">Get callback logs</a>
@@ -342,7 +348,7 @@
 <p>The Kardia API uses API keys to authenticate requests. APIs within the Kardia platform require the use of HTTP Basic Authentication, constructed from a valid API key as the username and empty password combination.</p>
 
 <blockquote>
-<p>Example Requests </p>
+<p>Example Requests</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># Get your API Key</span>
 curl -X POST https://api.kardia.com/v1/apikey <span class="se">\</span>
@@ -579,8 +585,9 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
       <span class="s2">"patientID"</span>: <span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span>,
       <span class="s2">"duration"</span>: 30000,
       <span class="s2">"heartRate"</span>: 65,  
-      <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>
-      <span class="s2">"recordedAt"</span>: <span class="s2">"2008-09-15T15:53:00+05:00"</span>
+      <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>,
+      <span class="s2">"recordedAt"</span>: <span class="s2">"2008-09-15T15:53:00+05:00"</span>,
+      <span class="s2">"tags"</span>: <span class="o">[</span><span class="s2">"Low sleep"</span>, <span class="s2">"At doctors office"</span><span class="o">]</span>
     <span class="o">}</span>
   <span class="o">]</span>,
   <span class="s2">"pageInfo"</span>: <span class="o">{</span>
@@ -836,8 +843,9 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
   <span class="s2">"algorithmDetermination"</span>: <span class="s2">"normal"</span>,
   <span class="s2">"duration"</span>: 30000,
   <span class="s2">"heartRate"</span>: 65,  
-  <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>
-  <span class="s2">"recordedAt"</span>: <span class="s2">"2008-09-15T15:53:00+05:00"</span>
+  <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>,
+  <span class="s2">"tags"</span>: <span class="o">[</span><span class="s2">"Low sleep"</span>, <span class="s2">"At doctors office"</span><span class="o">]</span>,
+  <span class="s2">"recordedAt"</span>: <span class="s2">"2008-09-15T15:53:00+05:00"</span>,
   <span class="s2">"data"</span>: <span class="o">{</span>
     <span class="s2">"raw"</span>: <span class="o">{</span>
       <span class="s2">"frequency"</span>: 300,
@@ -871,7 +879,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
         <span class="s2">"AVR"</span>: <span class="o">[</span>...],
         <span class="s2">"AVL"</span>: <span class="o">[</span>...],
         <span class="s2">"AVF"</span>: <span class="o">[</span>...]
-      <span class="o">}</span>, 
+      <span class="o">}</span>,
       <span class="s2">"numLeads"</span>: 6
     <span class="o">}</span>,
     <span class="s2">"enhanced"</span>: <span class="o">{</span>
@@ -906,13 +914,13 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
         <span class="s2">"AVR"</span>: <span class="o">[</span>...],
         <span class="s2">"AVL"</span>: <span class="o">[</span>...],
         <span class="s2">"AVF"</span>: <span class="o">[</span>...]
-      <span class="o">}</span>, 
+      <span class="o">}</span>,
       <span class="s2">"numLeads"</span>: 6
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
-<p>To get a single ECG for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id</code> </p>
+<p>To get a single ECG for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id</code></p>
 <h2 id='single-ecg-pdf'>Single ECG PDF</h2>
 <blockquote>
 <p>Example Request</p>
@@ -920,7 +928,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a.pdf <span class="se">\</span>
   -u 7863674b-1919-432b-90d5-838fb8207d3f:
 </code></pre>
-<p>To get a single ECG PDF for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id.pdf</code> </p>
+<p>To get a single ECG PDF for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id.pdf</code></p>
 <h2 id='get-all-recordings'>Get All Recordings</h2>
 <blockquote>
 <p>Example Request</p>
@@ -939,8 +947,9 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
       <span class="s2">"algorithmDetermination"</span>: <span class="s2">"normal"</span>,
       <span class="s2">"duration"</span>: 30000,
       <span class="s2">"heartRate"</span>: 65,  
-      <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>
-      <span class="s2">"recordedAt"</span>: <span class="s2">"2008-09-15T15:53:00+05:00"</span>
+      <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>,
+      <span class="s2">"recordedAt"</span>: <span class="s2">"2008-09-15T15:53:00+05:00"</span>,
+      <span class="s2">"tags"</span>: <span class="o">[</span><span class="s2">"Low sleep"</span>, <span class="s2">"At doctors office"</span><span class="o">]</span>
   <span class="o">}]</span>,
   <span class="s2">"pageInfo"</span>: <span class="o">{</span>
     <span class="s2">"startCursor"</span>: <span class="s2">"c3RhcnRDdXJzb3I="</span>,
@@ -974,7 +983,8 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
       <span class="s2">"algorithmDetermination"</span>: <span class="s2">"normal"</span>,
       <span class="s2">"duration"</span>: 30000,
       <span class="s2">"heartRate"</span>: 65,  
-      <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>
+      <span class="s2">"note"</span>: <span class="s2">"Drank coffee, having palpitations."</span>,
+      <span class="s2">"tags"</span>: <span class="o">[</span><span class="s2">"Low sleep"</span>, <span class="s2">"At doctors office"</span><span class="o">]</span>,
       <span class="s2">"recordedAt"</span>: <span class="s2">"2008-09-15T15:53:00+05:00"</span>
   <span class="o">}]</span>,
   <span class="s2">"pageInfo"</span>: <span class="o">{</span>
@@ -1157,7 +1167,45 @@ is specified. Valid error types are <code>poorQuality</code>, <code>undetermined
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='set-qt-analysis-callback-url'>Set QT Analysis Callback URL</h2>
+</span></code></pre><h2 id='callback-json-examples'>Callback JSON examples</h2>
+<blockquote>
+<p>Participant connected to a team</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"participantConnected"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customParticipantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mrn123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patientid123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Participant disconnected from a team</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"participantDisconnected"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customParticipantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mrn123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patientid123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>New recording made by patient</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w">   </span><span class="s2">"newRecording"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recordingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recordingid123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patientid123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Stack updated based on an automatic &quot;trigger&quot; or &quot;manual&quot; action</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recordingInboxUpdated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"memberId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memberid123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trigger"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This section provides examples of JSON request bodies that are sent to the callback URL from Alivecor backend when the described events take place</p>
+<h2 id='set-qt-analysis-callback-url'>Set QT Analysis Callback URL</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
@@ -1186,7 +1234,17 @@ is specified. Valid error types are <code>poorQuality</code>, <code>undetermined
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='get-callback-logs'>Get callback logs</h2>
+</span></code></pre><h2 id='qt-callback-json-example'>QT callback JSON example</h2>
+<blockquote>
+<p>QT analysis complete</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qtAnalysis"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recordingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recordingID123"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This section provides examples of JSON request bodies that are sent to the QT callback URL from Alivecor backend when the described events take place</p>
+<h2 id='get-callback-logs'>Get callback logs</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
