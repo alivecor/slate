@@ -231,6 +231,14 @@
             <a href="#base-url" class="toc-h1 toc-link" data-title="Base URL">Base URL</a>
           </li>
           <li>
+            <a href="#partners" class="toc-h1 toc-link" data-title="Partners">Partners</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-associated-teams" class="toc-h2 toc-link" data-title="Get associated teams">Get associated teams</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#patients" class="toc-h1 toc-link" data-title="Patients">Patients</a>
               <ul class="toc-list-h2">
                   <li>
@@ -384,6 +392,31 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <td>https://eu-api.kardia.com</td>
 </tr>
 </tbody></table>
+<h1 id='partners'>Partners</h1><h2 id='get-associated-teams'>Get associated teams</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/partner/v1/teams<span class="se">\</span>
+ -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"teams"</span>: <span class="o">[{</span>
+        <span class="s2">"id"</span>: <span class="s2">"abcdefg"</span>,
+        <span class="s2">"name"</span>: <span class="s2">"team name"</span>,
+        <span class="s2">"avatarUrl"</span>: <span class="s2">"https://s3.amazonaws.com/public/images/partner-logos/fpo_avatar.png"</span>,
+        <span class="s2">"callbackUrl"</span>: <span class="s2">"https://ptsv.com/t/qgies-callbackTest/post"</span>,
+        <span class="s2">"logoUrl"</span>: <span class="s2">"https://s3.amazonaws.com/fpo_logo.png"</span>,
+        <span class="s2">"timezone"</span>: <span class="s2">"America/Los_Angeles"</span>,
+        <span class="s2">"secretKey"</span>: <span class="s2">"secret-key"</span>,
+        <span class="s2">"createdAt"</span>: <span class="s2">"2016-06-02 19:41:59.01917 +0000 +0000"</span>,
+        <span class="s2">"updatedAt"</span>: <span class="s2">"2020-12-14 07:17:59.564112 +0000 +0000"</span>
+    <span class="o">}]</span>
+<span class="o">}</span>
+</code></pre>
+<p>Responds to <code>GET</code> requests to <code>/partner/v1/teams</code> and returns a list of teams associated with the partner.</p>
 <h1 id='patients'>Patients</h1><h3 id='patient-object'>Patient Object</h3>
 <table><thead>
 <tr>
