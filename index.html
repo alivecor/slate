@@ -263,6 +263,9 @@
                     <a href="#disconnect-patient-connection" class="toc-h2 toc-link" data-title="Disconnect patient connection">Disconnect patient connection</a>
                   </li>
                   <li>
+                    <a href="#get-connection-template" class="toc-h2 toc-link" data-title="Get Connection Template">Get Connection Template</a>
+                  </li>
+                  <li>
                     <a href="#get-patient-recordings" class="toc-h2 toc-link" data-title="Get Patient Recordings">Get Patient Recordings</a>
                   </li>
                   <li>
@@ -416,7 +419,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
     <span class="o">}]</span>
 <span class="o">}</span>
 </code></pre>
-<p>kevintest1. Responds to <code>GET</code> requests to <code>/partner/v1/teams</code> and returns a list of teams associated with the partner.</p>
+<p>Responds to <code>GET</code> requests to <code>/partner/v1/teams</code> and returns a list of teams associated with the partner.</p>
 <h1 id='patients'>Patients</h1><h3 id='patient-object'>Patient Object</h3>
 <table><thead>
 <tr>
@@ -600,6 +603,27 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <pre class="highlight shell tab-shell"><code><span class="o">{}</span>
 </code></pre>
 <p>Responds to <code>POST</code> requests to <code>/v1/patients/:id/disconnect</code> and terminates a patient&#39;s connection. Returns an empty response if successful.</p>
+<h2 id='get-connection-template'>Get Connection Template</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/teamConnectionTemplate <span class="se">\</span>
+ -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"connectionTemplates"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"teamID"</span>: <span class="s2">"mODh8FMBHX5newmSou72c1w862ou0uyd"</span>,
+            <span class="s2">"templateName"</span>: <span class="s2">"BibiQTteam"</span>,
+            <span class="s2">"templateId"</span>: <span class="s2">"A3e5MoOwNNUFlo1qwPdZc1w891yca3w7"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<p>Responds to <code>GET</code> requests to <code>/v1/teamConnectionTemplate</code> returns a template ids, template names and team id.</p>
 <h2 id='get-patient-recordings'>Get Patient Recordings</h2>
 <blockquote>
 <p>Example Request</p>
