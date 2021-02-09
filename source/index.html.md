@@ -237,6 +237,31 @@ curl -X POST https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i
 
 Responds to `POST` requests to `/v1/patients/:id/disconnect` and terminates a patient's connection. Returns an empty response if successful.
 
+## Get Connection Template
+
+> Example Request
+
+```shell
+curl https://api.kardia.com/v1/teamConnectionTemplate \
+ -u YOUR-API-KEY:
+```
+
+> Example Response
+
+```shell
+{
+    "connectionTemplates": [
+        {
+            "teamID": "mODh8FMBHX5newmSou72c1w862ou0uyd",
+            "templateName": "BibiQTteam",
+            "templateId": "A3e5MoOwNNUFlo1qwPdZc1w891yca3w7"
+        }
+    ]
+}
+```
+
+Responds to `GET` requests to `/v1/teamConnectionTemplate` returns a template ids, template names and team id.
+
 ## Get Patient Recordings
 
 > Example Request
