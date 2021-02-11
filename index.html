@@ -616,14 +616,17 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
     <span class="s2">"connectionTemplates"</span>: <span class="o">[</span>
         <span class="o">{</span>
-            <span class="s2">"teamID"</span>: <span class="s2">"mODh8FMBHX5newmSou72c1w862ou0uyd"</span>,
-            <span class="s2">"templateName"</span>: <span class="s2">"BibiQTteam"</span>,
-            <span class="s2">"templateId"</span>: <span class="s2">"A3e5MoOwNNUFlo1qwPdZc1w891yca3w7"</span>
+            <span class="s2">"teamID"</span>: <span class="s2">"Fs0ZK1raZi5KidNtCyK9b4nyh6gkq4ah"</span>,
+            <span class="s2">"templateName"</span>: <span class="s2">"KardiaMobile + 1 Year Connection (</span><span class="nv">$120</span><span class="s2">)"</span>,
+            <span class="s2">"templateId"</span>: <span class="s2">"4qq0q0tSkSKziiUcyjOYbpi9whdo7403"</span>,
+            <span class="s2">"duration"</span>: <span class="o">{</span>
+                <span class="s2">"Value"</span>: 365
+            <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">]</span>
 <span class="o">}</span>
 </code></pre>
-<p>Responds to <code>GET</code> requests to <code>/v1/teamConnectionTemplate</code> returns a template ids, template names and team id.</p>
+<p>Responds to <code>GET</code> requests to <code>/v1/teamConnectionTemplate</code> returns a template ids, template names, price, duration and team id.</p>
 <h2 id='get-patient-recordings'>Get Patient Recordings</h2>
 <blockquote>
 <p>Example Request</p>
