@@ -252,15 +252,18 @@ curl https://api.kardia.com/v1/teamConnectionTemplate \
 {
     "connectionTemplates": [
         {
-            "teamID": "mODh8FMBHX5newmSou72c1w862ou0uyd",
-            "templateName": "BibiQTteam",
-            "templateId": "A3e5MoOwNNUFlo1qwPdZc1w891yca3w7"
+            "teamID": "Fs0ZK1raZi5KidNtCyK9b4nyh6gkq4ah",
+            "templateName": "KardiaMobile + 1 Year Connection ($120)",
+            "templateId": "4qq0q0tSkSKziiUcyjOYbpi9whdo7403",
+            "duration": {
+                "Value": 365
+            }
         }
     ]
 }
 ```
 
-Responds to `GET` requests to `/v1/teamConnectionTemplate` returns a template ids, template names and team id.
+Responds to `GET` requests to `/v1/teamConnectionTemplate` returns a template ids, template names, price, duration and team id.
 
 ## Get Patient Recordings
 
