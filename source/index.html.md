@@ -344,6 +344,7 @@ curl https://api.kardia.com/v1/patients?limit=50&start=ZW5kQ3Vyc29yc2Rh= \
       "firstname": "Joe",
       "lastname": "Smith",
       "sex": 0
+      "status": "connected"
     }],
     "pageInfo": {
       "startCursor": "c3RhcnRDdXJzb3I=",
