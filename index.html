@@ -266,6 +266,9 @@
                     <a href="#get-connection-template" class="toc-h2 toc-link" data-title="Get Connection Template">Get Connection Template</a>
                   </li>
                   <li>
+                    <a href="#get-summary-report" class="toc-h2 toc-link" data-title="Get Summary Report">Get Summary Report</a>
+                  </li>
+                  <li>
                     <a href="#get-patient-recordings" class="toc-h2 toc-link" data-title="Get Patient Recordings">Get Patient Recordings</a>
                   </li>
                   <li>
@@ -627,6 +630,18 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <span class="o">}</span>
 </code></pre>
 <p>Responds to <code>GET</code> requests to <code>/v1/teamConnectionTemplate</code> returns a template ids, template names, price, duration and team id.</p>
+<h2 id='get-summary-report'>Get Summary Report</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/patients/<span class="o">{</span>id<span class="o">}</span>/summaryReport <span class="se">\</span>
+ -u YOUR-API-KEY:
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+
+<p>Responds to <code>GET</code> requests to <code>/patients/{id}/summaryReport</code> returns a application/pdf.</p>
 <h2 id='get-patient-recordings'>Get Patient Recordings</h2>
 <blockquote>
 <p>Example Request</p>
@@ -732,6 +747,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
       <span class="s2">"firstname"</span>: <span class="s2">"Joe"</span>,
       <span class="s2">"lastname"</span>: <span class="s2">"Smith"</span>,
       <span class="s2">"sex"</span>: 0
+      <span class="s2">"status"</span>: <span class="s2">"connected"</span>
     <span class="o">}]</span>,
     <span class="s2">"pageInfo"</span>: <span class="o">{</span>
       <span class="s2">"startCursor"</span>: <span class="s2">"c3RhcnRDdXJzb3I="</span>,
