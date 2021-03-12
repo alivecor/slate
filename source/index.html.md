@@ -265,6 +265,21 @@ curl https://api.kardia.com/v1/teamConnectionTemplate \
 
 Responds to `GET` requests to `/v1/teamConnectionTemplate` returns a template ids, template names, price, duration and team id.
 
+## Get Summary Report
+
+> Example Request
+
+```shell
+curl https://api.kardia.com/patients/{id}/summaryReport \
+ -u YOUR-API-KEY:
+```
+
+> Example Response
+
+
+Responds to `GET` requests to `/patients/{id}/summaryReport` returns a application/pdf.
+
+
 ## Get Patient Recordings
 
 > Example Request
