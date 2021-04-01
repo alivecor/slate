@@ -623,7 +623,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
             <span class="s2">"templateName"</span>: <span class="s2">"KardiaMobile + 1 Year Connection (</span><span class="nv">$120</span><span class="s2">)"</span>,
             <span class="s2">"templateId"</span>: <span class="s2">"4qq0q0tSkSKziiUcyjOYbpi9whdo7403"</span>,
             <span class="s2">"duration"</span>: <span class="o">{</span>
-                <span class="s2">"Value"</span>: 30
+                <span class="s2">"Value"</span>: 365
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">]</span>
@@ -634,14 +634,14 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/patients/<span class="o">{</span>id<span class="o">}</span>/summaryReport <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/patients/<span class="o">{</span>id<span class="o">}</span>/summaryReport?startTime<span class="o">=</span>2020-06-03T23:54:38.780512Z&amp;endTime<span class="o">=</span>2020-06-03T23:54:38.780512Z&amp;countryCode<span class="o">=</span>US <span class="se">\</span>
  -u YOUR-API-KEY:
 </code></pre>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 
-<p>Responds to <code>GET</code> requests to <code>/patients/{id}/summaryReport</code> returns a application/pdf.</p>
+<p>Responds to <code>GET</code> requests to <code>/patients/{id}/summaryReport</code> returns a application/pdf. Date range can be provided to the request.</p>
 <h2 id='get-patient-recordings'>Get Patient Recordings</h2>
 <blockquote>
 <p>Example Request</p>
@@ -747,7 +747,6 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
       <span class="s2">"firstname"</span>: <span class="s2">"Joe"</span>,
       <span class="s2">"lastname"</span>: <span class="s2">"Smith"</span>,
       <span class="s2">"sex"</span>: 0
-      <span class="s2">"status"</span>: <span class="s2">"connected"</span>
     <span class="o">}]</span>,
     <span class="s2">"pageInfo"</span>: <span class="o">{</span>
       <span class="s2">"startCursor"</span>: <span class="s2">"c3RhcnRDdXJzb3I="</span>,
