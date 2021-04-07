@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Kardia API Reference</title>
 
-    <style>
+    <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight .gh {
@@ -42,7 +42,7 @@
 .highlight .cs {
   color: #75715e;
 }
-.highlight .c, .highlight .cd {
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
   color: #75715e;
 }
 .highlight .err {
@@ -126,7 +126,7 @@
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s {
+.highlight .s, .highlight .sa, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -141,16 +141,13 @@
 .highlight .ne {
   color: #a6e22e;
 }
-.highlight .nf {
+.highlight .nf, .highlight .fm {
   color: #a6e22e;
 }
 .highlight .vc {
   color: #ffffff;
 }
 .highlight .nn {
-  color: #ffffff;
-}
-.highlight .nl {
   color: #ffffff;
 }
 .highlight .ni {
@@ -165,7 +162,7 @@
 .highlight .vi {
   color: #ffffff;
 }
-.highlight .nv {
+.highlight .nv, .highlight .vm {
   color: #ffffff;
 }
 .highlight .w {
@@ -176,6 +173,9 @@
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
 }
 .highlight .ow {
   color: #f92672;
@@ -196,20 +196,107 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-f5b91f95.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-a9fde460.js"></script>
+
   </head>
 
   <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/logo-eee68bc5.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -263,7 +350,7 @@
                     <a href="#disconnect-patient-connection" class="toc-h2 toc-link" data-title="Disconnect patient connection">Disconnect patient connection</a>
                   </li>
                   <li>
-                    <a href="#get-connection-template" class="toc-h2 toc-link" data-title="Get Connection Template">Get Connection Template</a>
+                    <a href="#get-connection-templates" class="toc-h2 toc-link" data-title="Get Connection Templates">Get Connection Templates</a>
                   </li>
                   <li>
                     <a href="#get-summary-report" class="toc-h2 toc-link" data-title="Get Summary Report">Get Summary Report</a>
@@ -354,33 +441,33 @@
 <p>The Kardia API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.</p>
 <h1 id='how-it-works'>How it Works</h1>
 <p>Kardia Pro facilitates a connection between a clinician’s Kardia Pro account and their selected patients. Patients are provisioned with a unique code that connects their Kardia application specifically to their clinician or service and allows all ECG recordings captured via Kardia Mobile to be accessible to the clinician via the Kardia Pro API.</p>
-<h1 id='authentication'>Authentication</h1><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients <span class="se">\</span>
-  -u YOUR-API-KEY:
+<h1 id='authentication'>Authentication</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients <span class="se">\</span>
+  <span class="nt">-u</span> YOUR-API-KEY:
 <span class="c"># The colon prevents curl from asking for a password.</span>
 
-</code></pre>
+</code></pre></div>
 <p>The Kardia API uses API keys to authenticate requests. APIs within the Kardia platform require the use of HTTP Basic Authentication, constructed from a valid API key as the username and empty password combination.</p>
 
 <blockquote>
 <p>Example Requests</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="c"># Get your API Key</span>
-curl -X POST https://api.kardia.com/v1/apikey <span class="se">\</span>
-  -d <span class="nv">email</span><span class="o">=</span>YOUR_EMAIL <span class="se">\</span>
-  -d <span class="nv">password</span><span class="o">=</span>YOUR_PASSWORD
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Get your API Key</span>
+curl <span class="nt">-X</span> POST https://api.kardia.com/v1/apikey <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">email</span><span class="o">=</span>YOUR_EMAIL <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">password</span><span class="o">=</span>YOUR_PASSWORD
+</code></pre></div>
 <p>To access your API Key, send a <code>POST</code> request with your Kardia Pro <code>email</code> and <code>password</code> as url encoded form params to <code>/v1/apikey</code>.</p>
-<pre class="highlight shell tab-shell"><code><span class="c"># Generate a new API Key</span>
-curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
-  -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Generate a new API Key</span>
+curl <span class="nt">-X</span> POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
+  <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3test974-cd11-48c3-a0dd-621test8test"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3test974-cd11-48c3-a0dd-621test8test"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>To generate a new API Key, send a <code>POST</code> request to <code>/v1/apikey/new</code> using your current API Key.</p>
 <h1 id='base-url'>Base URL</h1>
 <table><thead>
@@ -402,13 +489,13 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/partner/v1/teams<span class="se">\</span>
- -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/partner/v1/teams<span class="se">\</span>
+ <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
     <span class="s2">"teams"</span>: <span class="o">[{</span>
         <span class="s2">"id"</span>: <span class="s2">"abcdefg"</span>,
         <span class="s2">"name"</span>: <span class="s2">"team name"</span>,
@@ -421,7 +508,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
         <span class="s2">"updatedAt"</span>: <span class="s2">"2020-12-14 07:17:59.564112 +0000 +0000"</span>
     <span class="o">}]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Responds to <code>GET</code> requests to <code>/partner/v1/teams</code> and returns a list of teams associated with the partner.</p>
 <h1 id='patients'>Patients</h1><h3 id='patient-object'>Patient Object</h3>
 <table><thead>
@@ -471,28 +558,28 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients <span class="se">\</span>
-  -u YOUR-API-KEY: <span class="se">\</span>
-  -d <span class="nv">mrn</span><span class="o">=</span>JS-20000721 <span class="se">\</span>
-  -d <span class="nv">dob</span><span class="o">=</span>2000-07-21 <span class="se">\</span>
-  -d <span class="nv">email</span><span class="o">=</span>joe@example.com <span class="se">\</span>
-  -d <span class="nv">firstname</span><span class="o">=</span>Joe <span class="se">\</span>
-  -d <span class="nv">lastname</span><span class="o">=</span>Smith <span class="se">\</span>
-  -d <span class="nv">sex</span><span class="o">=</span>1
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients <span class="se">\</span>
+  <span class="nt">-u</span> YOUR-API-KEY: <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">mrn</span><span class="o">=</span>JS-20000721 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">dob</span><span class="o">=</span>2000-07-21 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">email</span><span class="o">=</span>joe@example.com <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">firstname</span><span class="o">=</span>Joe <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">lastname</span><span class="o">=</span>Smith <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">sex</span><span class="o">=</span>1
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"mrn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JS-20000721"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-03-12"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joe@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joe"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"sex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mrn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JS-20000721"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-03-12"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joe@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>To create a patient, send a <code>POST</code> request to <code>/v1/patients</code>.</p>
 <h3 id='arguments'>Arguments</h3>
 <table><thead>
@@ -544,13 +631,13 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i <span class="se">\</span>
- -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i <span class="se">\</span>
+ <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"id"</span>: <span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span>,
   <span class="s2">"mrn"</span>: <span class="s2">"JMJ-19810712"</span>,
   <span class="s2">"dob"</span>: <span class="s2">"1970-03-12"</span>,
@@ -559,100 +646,97 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
   <span class="s2">"lastname"</span>: <span class="s2">"Smith"</span>,
   <span class="s2">"sex"</span>: 0
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Responds to <code>GET</code> requests to <code>/v1/patients/:id</code> and returns a single patient object.</p>
 <h2 id='delete-patient'>Delete Patient</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X DELETE https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i <span class="se">\</span>
- -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i <span class="se">\</span>
+ <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <p>Responds to <code>DELETE</code> requests to <code>/v1/patients/:id</code>. Successful requests return an HTTP status <code>202 Accepted</code>. Developers must request Data Controller access for this functionality.</p>
 <h2 id='export-patient'>Export Patient</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/export <span class="se">\</span>
- -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/export <span class="se">\</span>
+ <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <p>Responds to <code>GET</code> requests to <code>/v1/patients/:id/export</code>. Exports are queued and email sent to the API key owner once the export is ready for download. Returns an HTTP <code>202 Accepted</code>on success. Developers must request Data Controller access for this functionality.</p>
 <h2 id='get-connection-code'>Get Connection Code</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/code <span class="se">\</span>
- -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/code <span class="se">\</span>
+ <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"code"</span>: <span class="s2">"LQYP-MSAK-NPJR"</span>,
   <span class="s2">"status"</span>: <span class="s2">"connected"</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Responds to <code>GET</code> requests to <code>/v1/patients/:id/code</code> and returns a valid connection code for the given patient and the status of the connection, either <code>connected</code> or <code>pending</code>.</p>
 <h2 id='disconnect-patient-connection'>Disconnect patient connection</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/disconnect <span class="se">\</span>
- -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/disconnect <span class="se">\</span>
+ <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{}</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{}</span>
+</code></pre></div>
 <p>Responds to <code>POST</code> requests to <code>/v1/patients/:id/disconnect</code> and terminates a patient&#39;s connection. Returns an empty response if successful.</p>
-<h2 id='get-connection-template'>Get Connection Template</h2>
+<h2 id='get-connection-templates'>Get Connection Templates</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/teamConnectionTemplate <span class="se">\</span>
- -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/teamConnectionTemplate <span class="se">\</span>
+ <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-    <span class="s2">"connectionTemplates"</span>: <span class="o">[</span>
-        <span class="o">{</span>
-            <span class="s2">"teamID"</span>: <span class="s2">"Fs0ZK1raZi5KidNtCyK9b4nyh6gkq4ah"</span>,
-            <span class="s2">"templateName"</span>: <span class="s2">"KardiaMobile + 1 Year Connection (</span><span class="nv">$120</span><span class="s2">)"</span>,
-            <span class="s2">"templateId"</span>: <span class="s2">"4qq0q0tSkSKziiUcyjOYbpi9whdo7403"</span>,
-            <span class="s2">"duration"</span>: <span class="o">{</span>
-                <span class="s2">"Value"</span>: 365
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">]</span>
-<span class="o">}</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">[</span>
+  <span class="o">{</span>
+      <span class="s2">"teamID"</span>: <span class="s2">"Fs0ZK1raZi5KidNtCyK9b4nyh6gkq4ah"</span>,
+      <span class="s2">"templateName"</span>: <span class="s2">"KardiaMobile + 1 Year Connection (</span><span class="nv">$120</span><span class="s2">)"</span>,
+      <span class="s2">"templateId"</span>: <span class="s2">"4qq0q0tSkSKziiUcyjOYbpi9whdo7403"</span>,
+      <span class="s2">"duration"</span>: 365,
+      <span class="s2">"price"</span>: 9.99
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
 <p>Responds to <code>GET</code> requests to <code>/v1/teamConnectionTemplate</code> returns a template ids, template names, price, duration and team id.</p>
 <h2 id='get-summary-report'>Get Summary Report</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/patients/<span class="o">{</span>id<span class="o">}</span>/summaryReport?startTime<span class="o">=</span>2020-06-03T23:54:38.780512Z&amp;endTime<span class="o">=</span>2020-06-03T23:54:38.780512Z&amp;countryCode<span class="o">=</span>US <span class="se">\</span>
- -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/patients/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/summaryReport <span class="se">\</span>
+ <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 
-<p>Responds to <code>GET</code> requests to <code>/patients/{id}/summaryReport</code> returns a application/pdf. Date range can be provided to the request.</p>
+<p>Responds to <code>GET</code> requests to <code>/patients/{id}/summaryReport</code> returns a application/pdf.</p>
 <h2 id='get-patient-recordings'>Get Patient Recordings</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/recordings <span class="se">\</span>
- -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i/recordings <span class="se">\</span>
+ <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"totalCount"</span>: 200,
   <span class="s2">"recordings"</span>: <span class="o">[</span>
     <span class="o">{</span>
@@ -671,7 +755,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
     <span class="s2">"hasNextPage"</span>: <span class="nb">true</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Responds to <code>GET</code> requests to <code>/v1/patients/:id/recordings</code> and returns an array of ECG recordings for the given patient.</p>
 
 <p><strong>Querystring parameters</strong></p>
@@ -731,13 +815,13 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients?limit<span class="o">=</span>50&amp;start<span class="o">=</span><span class="nv">ZW5kQ3Vyc29yc2Rh</span><span class="o">=</span> <span class="se">\</span>
-  -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients?limit<span class="o">=</span>50&amp;start<span class="o">=</span><span class="nv">ZW5kQ3Vyc29yc2Rh</span><span class="o">=</span> <span class="se">\</span>
+  <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"totalCount"</span>: 200,
     <span class="s2">"patients"</span>: <span class="o">[{</span>
       <span class="s2">"id"</span>: <span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span>,
@@ -747,6 +831,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
       <span class="s2">"firstname"</span>: <span class="s2">"Joe"</span>,
       <span class="s2">"lastname"</span>: <span class="s2">"Smith"</span>,
       <span class="s2">"sex"</span>: 0
+      <span class="s2">"status"</span>: <span class="s2">"connected"</span>
     <span class="o">}]</span>,
     <span class="s2">"pageInfo"</span>: <span class="o">{</span>
       <span class="s2">"startCursor"</span>: <span class="s2">"c3RhcnRDdXJzb3I="</span>,
@@ -754,7 +839,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
       <span class="s2">"hasNextPage"</span>: <span class="nb">true</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Responds to <code>GET</code> requests to <code>/v1/patients</code> and returns a list of patients with the most recent created patient first.</p>
 
 <p><strong>Querystring parameters</strong></p>
@@ -906,13 +991,13 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a <span class="se">\</span>
-  -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a <span class="se">\</span>
+  <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"id"</span>: <span class="s2">"3wde1eem9vy4y1a0rv3y98u2a"</span>,
   <span class="s2">"patientID"</span>: <span class="s2">"wNSEDeLOEPQE5rznkJmwbnjpxfdst93i"</span>,
   <span class="s2">"algorithmDetermination"</span>: <span class="s2">"normal"</span>,
@@ -928,24 +1013,24 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
       <span class="s2">"samples"</span>: <span class="o">{</span>
         <span class="s2">"leadI"</span>: <span class="o">[</span>
           397,
-          -262,
-          -426,
-          -284,
+          <span class="nt">-262</span>,
+          <span class="nt">-426</span>,
+          <span class="nt">-284</span>,
           286,
           391,
-          -45,
-          -249,
-          -30,
+          <span class="nt">-45</span>,
+          <span class="nt">-249</span>,
+          <span class="nt">-30</span>,
           566,
           515,
           204,
-          -138,
-          -30,
+          <span class="nt">-138</span>,
+          <span class="nt">-30</span>,
           491,
           572,
           103,
-          -187,
-          -62,
+          <span class="nt">-187</span>,
+          <span class="nt">-62</span>,
           322,
           ...     
         <span class="o">]</span>,
@@ -963,24 +1048,24 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
       <span class="s2">"samples"</span>: <span class="o">{</span>
         <span class="s2">"lead_I"</span>: <span class="o">[</span>
           397,
-          -262,
-          -426,
-          -284,
+          <span class="nt">-262</span>,
+          <span class="nt">-426</span>,
+          <span class="nt">-284</span>,
           286,
           391,
-          -45,
-          -249,
-          -30,
+          <span class="nt">-45</span>,
+          <span class="nt">-249</span>,
+          <span class="nt">-30</span>,
           566,
           515,
           204,
-          -138,
-          -30,
+          <span class="nt">-138</span>,
+          <span class="nt">-30</span>,
           491,
           572,
           103,
-          -187,
-          -62,
+          <span class="nt">-187</span>,
+          <span class="nt">-62</span>,
           322,
           ...     
         <span class="o">]</span>,
@@ -994,27 +1079,27 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>To get a single ECG for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id</code></p>
 <h2 id='single-ecg-pdf'>Single ECG PDF</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a.pdf <span class="se">\</span>
-  -u 7863674b-1919-432b-90d5-838fb8207d3f:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a.pdf <span class="se">\</span>
+  <span class="nt">-u</span> 7863674b-1919-432b-90d5-838fb8207d3f:
+</code></pre></div>
 <p>To get a single ECG PDF for a given patient send a <code>GET</code> request to <code>/v1/recordings/:id.pdf</code></p>
 <h2 id='get-all-recordings'>Get All Recordings</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/recordings <span class="se">\</span>
- -u 7863674b-1919-432b-90d5-838fb8207d3f:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/recordings <span class="se">\</span>
+ <span class="nt">-u</span> 7863674b-1919-432b-90d5-838fb8207d3f:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"totalCount"</span>: 200,
    <span class="s2">"recordings"</span>: <span class="o">[{</span>
       <span class="s2">"id"</span>: <span class="s2">"3wde1eem9vy4y1a0rv3y98u2a"</span>,
@@ -1032,7 +1117,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
     <span class="s2">"hasNextPage"</span>: <span class="nb">true</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Responds to <code>GET</code> requests to <code>/v1/recordings</code> and returns an array of ECG&#39;s across all patients taken in the Kardia Mobile App. This will not include screening station recordings.</p>
 
 <p><strong>Querystring parameters</strong></p>
@@ -1044,13 +1129,13 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/screening/recordings <span class="se">\</span>
- -u 7863674b-1919-432b-90d5-838fb8207d3f:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/screening/recordings <span class="se">\</span>
+ <span class="nt">-u</span> 7863674b-1919-432b-90d5-838fb8207d3f:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"totalCount"</span>: 200,
    <span class="s2">"recordings"</span>: <span class="o">[{</span>
       <span class="s2">"id"</span>: <span class="s2">"3wde1eem9vy4y1a0rv3y98u2a"</span>,
@@ -1068,7 +1153,7 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
     <span class="s2">"hasNextPage"</span>: <span class="nb">true</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Responds to <code>GET</code> requests to <code>/v1/screening/recordings</code> and returns an array of ECG&#39;s taken at Kardia Screening Stations.</p>
 
 <p><strong>Querystring parameters</strong></p>
@@ -1080,25 +1165,25 @@ curl -X POST https://api.kardia.com/v1/apikey/new <span class="se">\</span>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a/qt <span class="se">\</span>
- -u 7863674b-1919-432b-90d5-838fb8207d3f: <span class="se">\</span>
- --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
- --data <span class="s1">'{"qt": 1.45,"rr": 1.21,"qtcb": -5.12,"qtcf": 145, "error": "any error message", "errorType": "poorQuality"}'</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST https://api.kardia.com/v1/recordings/3wde1eem9vy4y1a0rv3y98u2a/qt <span class="se">\</span>
+ <span class="nt">-u</span> 7863674b-1919-432b-90d5-838fb8207d3f: <span class="se">\</span>
+ <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+ <span class="nt">--data</span> <span class="s1">'{"qt": 1.45,"rr": 1.21,"qtcb": -5.12,"qtcf": 145, "error": "any error message", "errorType": "poorQuality"}'</span>
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"recordingID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3wde1eem9vy4y1a0rv3y98u2a"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"qt"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.45</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"rr"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.21</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"qtcb"</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.12</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"qtcf"</span><span class="p">:</span><span class="w"> </span><span class="mi">145</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"measurementID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IOyFM8PTUW7DEw2UAircc1pfvsh2rxdd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any error message"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"poorQuality"</span><span class="w">    
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"recordingID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3wde1eem9vy4y1a0rv3y98u2a"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"qt"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.45</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rr"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.21</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"qtcb"</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"qtcf"</span><span class="p">:</span><span class="w"> </span><span class="mi">145</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"measurementID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IOyFM8PTUW7DEw2UAircc1pfvsh2rxdd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any error message"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"errorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"poorQuality"</span><span class="w">    
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>Responds to <code>POST</code> requests to <code>/v1/recordings/:recordingId/qt</code> and returns the created qt measurement object.
 A qt measurement may contain an optional error message, which will require an errorType if an error message
 is specified. Valid error types are <code>poorQuality</code>, <code>undeterminedRhythm</code>, and <code>other</code></p>
@@ -1145,20 +1230,20 @@ is specified. Valid error types are <code>poorQuality</code>, <code>undetermined
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/users <span class="se">\</span>
-  -u YOUR-API-KEY: <span class="se">\</span>
-  -d <span class="nv">email</span><span class="o">=</span>joe@example.com <span class="se">\</span>
-  -d <span class="nv">password</span><span class="o">=</span>5up3R53Cur3 <span class="se">\</span>
-  -d <span class="nv">countryCode</span><span class="o">=</span>us <span class="se">\</span>
-  -d <span class="nv">patientId</span><span class="o">=</span>wNSEDeLOEPQE5rznkJmwbnjpxfdst93i
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/users <span class="se">\</span>
+  <span class="nt">-u</span> YOUR-API-KEY: <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">email</span><span class="o">=</span>joe@example.com <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">password</span><span class="o">=</span>5up3R53Cur3 <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">countryCode</span><span class="o">=</span>us <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">patientId</span><span class="o">=</span>wNSEDeLOEPQE5rznkJmwbnjpxfdst93i
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"requestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"q1ATFmh7OShS2Dmd1cVAb6boqkrp7gif"</span><span class="p">,</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"requestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"q1ATFmh7OShS2Dmd1cVAb6boqkrp7gif"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>The API allows developers to create Kardia Mobile users that will be automatically connected to the Kardia Pro account. To create a Kardia Mobile user, send a <code>POST</code> request to <code>/v1/users</code>.</p>
 <h3 id='arguments-2'>Arguments</h3>
 <table><thead>
@@ -1209,148 +1294,148 @@ is specified. Valid error types are <code>poorQuality</code>, <code>undetermined
 <blockquote>
 <p>Example Body</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w">   </span><span class="s2">"qtAnalysis"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"recordingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123recordingIDTest"</span><span class="p">,</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"eventType"</span><span class="p">:</span><span class="w">   </span><span class="s2">"qtAnalysis"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recordingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123recordingIDTest"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='set-callback-url'>Set callback URL</h2>
+</span></code></pre></div><h2 id='set-callback-url'>Set callback URL</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X PUT https://api.kardia.com/v1/callback <span class="se">\</span>
-  -u YOUR-API-KEY: <span class="se">\</span>
-  -d <span class="nv">url</span><span class="o">=</span>https://www.example.com/webhooks
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT https://api.kardia.com/v1/callback <span class="se">\</span>
+  <span class="nt">-u</span> YOUR-API-KEY: <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">url</span><span class="o">=</span>https://www.example.com/webhooks
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>Lets you assign a callback URL for POST notifications. Make sure to assign a publicly accessible URL for your callback service. Responds to <code>PUT</code> requests to <code>/v1/callback</code>.</p>
 <h2 id='get-callback-url'>Get callback URL</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/callback <span class="se">\</span>
-  -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/callback <span class="se">\</span>
+  <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='callback-json-examples'>Callback JSON examples</h2>
+</span></code></pre></div><h2 id='callback-json-examples'>Callback JSON examples</h2>
 <blockquote>
 <p>Participant connected to a team</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"participantConnected"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"customParticipantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mrn123"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patientid123"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"participantConnected"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"customParticipantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mrn123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patientid123"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <blockquote>
 <p>Participant disconnected from a team</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"participantDisconnected"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"customParticipantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mrn123"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patientid123"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"participantDisconnected"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"customParticipantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mrn123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patientid123"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <blockquote>
 <p>New recording made by patient</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w">   </span><span class="s2">"newRecording"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recordingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recordingid123"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patientid123"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"eventType"</span><span class="p">:</span><span class="w">   </span><span class="s2">"newRecording"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recordingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recordingid123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patientid123"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <blockquote>
 <p>Stack updated based on an automatic &quot;trigger&quot; or &quot;manual&quot; action</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recordingInboxUpdated"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"memberId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memberid123"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trigger"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recordingInboxUpdated"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"memberId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memberid123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trigger"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This section provides examples of JSON request bodies that are sent to the callback URL from Alivecor backend when the described events take place</p>
 <h2 id='set-qt-analysis-callback-url'>Set QT Analysis Callback URL</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X PUT https://api.kardia.com/v1/qtCallback <span class="se">\</span>
-  -u YOUR-API-KEY: <span class="se">\</span>
-  -d <span class="nv">url</span><span class="o">=</span>https://www.example.com/webhooks
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT https://api.kardia.com/v1/qtCallback <span class="se">\</span>
+  <span class="nt">-u</span> YOUR-API-KEY: <span class="se">\</span>
+  <span class="nt">-d</span> <span class="nv">url</span><span class="o">=</span>https://www.example.com/webhooks
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>Lets you assign a callback URL for POST notifications. Make sure to assign a publicly accessible URL for your callback service. Responds to <code>PUT</code> requests to <code>/v1/qtCallback</code>.</p>
 <h2 id='get-qt-analysis-callback-url'>Get QT Analysis Callback URL</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/qtCallback <span class="se">\</span>
-  -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/qtCallback <span class="se">\</span>
+  <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/webhooks"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='qt-callback-json-example'>QT callback JSON example</h2>
+</span></code></pre></div><h2 id='qt-callback-json-example'>QT callback JSON example</h2>
 <blockquote>
 <p>QT analysis complete</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qtAnalysis"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recordingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recordingID123"</span><span class="p">,</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qtAnalysis"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recordingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recordingID123"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This section provides examples of JSON request bodies that are sent to the QT callback URL from Alivecor backend when the described events take place</p>
 <h2 id='get-callback-logs'>Get callback logs</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/logs <span class="se">\</span>
-  -u YOUR-API-KEY:
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/logs <span class="se">\</span>
+  <span class="nt">-u</span> YOUR-API-KEY:
+</code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"logs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"logs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newRecording"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-13T00:00:01Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed to send new recording to callback url"</span><span class="w">
+            </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newRecording"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-13T00:00:01Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed to send new recording to callback url"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newRecording"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-13T00:00:00Z"</span><span class="w">
+            </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newRecording"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-13T00:00:00Z"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"pageInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"startCursor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y3Vyc29yMjAxOS0wNS0xM1QwMDowMDowMVo="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"endCursor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y3Vyc29yMjAxOS0wNS0xM1QwMDowMDowMFo="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nl">"pageInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"startCursor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y3Vyc29yMjAxOS0wNS0xM1QwMDowMDowMVo="</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"endCursor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y3Vyc29yMjAxOS0wNS0xM1QwMDowMDowMFo="</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>Returns a paged list of logs. Send a <code>GET</code> request to <code>/v1/logs</code>.</p>
 
 <p><strong>Querystring parameters</strong></p>
