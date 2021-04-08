@@ -553,6 +553,11 @@ curl <span class="nt">-X</span> POST https://api.kardia.com/v1/apikey/new <span 
 <td>int</td>
 <td>The patient&#39;s sex as ISO/IEC5218</td>
 </tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Connection status for patient: &quot;pending&quot;, &quot;connected&quot;, &quot;none&quot;</td>
+</tr>
 </tbody></table>
 <h2 id='create-patient'>Create Patient</h2>
 <blockquote>
@@ -644,7 +649,8 @@ curl <span class="nt">-X</span> POST https://api.kardia.com/v1/apikey/new <span 
   <span class="s2">"email"</span>: <span class="s2">"joe@example.com"</span>,
   <span class="s2">"firstname"</span>: <span class="s2">"Joe"</span>,
   <span class="s2">"lastname"</span>: <span class="s2">"Smith"</span>,
-  <span class="s2">"sex"</span>: 0
+  <span class="s2">"sex"</span>: 0, 
+  <span class="s2">"status"</span>: <span class="s2">"pending"</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>Responds to <code>GET</code> requests to <code>/v1/patients/:id</code> and returns a single patient object.</p>
@@ -718,14 +724,48 @@ curl <span class="nt">-X</span> POST https://api.kardia.com/v1/apikey/new <span 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/patients/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/summaryReport <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/<span class="o">{</span>:id<span class="o">}</span>/summaryReport?startTime<span class="o">=</span>2021-03-15T15:04:05Z&amp;endTime<span class="o">=</span>2021-04-07T15:04:05Z&amp;countryCode<span class="o">=</span>us
  <span class="nt">-u</span> YOUR-API-KEY:
 </code></pre></div>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 
-<p>Responds to <code>GET</code> requests to <code>/patients/{id}/summaryReport</code> returns a application/pdf.</p>
+<p>Responds to <code>GET</code> requests to <code>/patients/{id}/summaryReport</code> returns a application/pdf. Defaults to last 30 days if start and endTime are not provided</p>
+<h3 id='arguments-2'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Unique id for patient</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>date</td>
+<td>No</td>
+<td>RFC3339 formatted time to start report</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>date</td>
+<td>No</td>
+<td>RFC3339 formatted time to end report</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>string</td>
+<td>No</td>
+<td>&#39;us&#39; or &#39;eu&#39;, used for formatting Dates in pdf response, defaults to us format</td>
+</tr>
+</tbody></table>
 <h2 id='get-patient-recordings'>Get Patient Recordings</h2>
 <blockquote>
 <p>Example Request</p>
@@ -1245,7 +1285,7 @@ is specified. Valid error types are <code>poorQuality</code>, <code>undetermined
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>The API allows developers to create Kardia Mobile users that will be automatically connected to the Kardia Pro account. To create a Kardia Mobile user, send a <code>POST</code> request to <code>/v1/users</code>.</p>
-<h3 id='arguments-2'>Arguments</h3>
+<h3 id='arguments-3'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Name</th>
