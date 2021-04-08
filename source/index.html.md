@@ -108,6 +108,7 @@ email      | string  | The patient's email address
 firstname  | string  | The patient's first name
 lastname   | string  | The patient's last name
 sex        | int     | The patient's sex as ISO/IEC5218
+status     | string  | Connection status for patient: "pending", "connected", "none"
 
 
 ## Create Patient
@@ -171,7 +172,8 @@ curl https://api.kardia.com/v1/patients/wNSEDeLOEPQE5rznkJmwbnjpxfdst93i \
   "email": "joe@example.com",
   "firstname": "Joe",
   "lastname": "Smith",
-  "sex": 0
+  "sex": 0, 
+  "status": "pending"
 }
 ```
 
@@ -267,14 +269,23 @@ Responds to `GET` requests to `/v1/teamConnectionTemplate` returns a template id
 > Example Request
 
 ```shell
-curl https://api.kardia.com/patients/{id}/summaryReport \
+curl https://api.kardia.com/v1/patients/{:id}/summaryReport?startTime=2021-03-15T15:04:05Z&endTime=2021-04-07T15:04:05Z&countryCode=us
  -u YOUR-API-KEY:
 ```
 
 > Example Response
 
 
-Responds to `GET` requests to `/patients/{id}/summaryReport` returns a application/pdf.
+Responds to `GET` requests to `/patients/{id}/summaryReport` returns a application/pdf. Defaults to last 30 days if start and endTime are not provided
+
+### Arguments
+
+Name        | Type   | Required | Description
+---------   | ------ | ---------| -----------
+id          | string | Yes      | Unique id for patient
+startTime   | date   | No       | RFC3339 formatted time to start report
+endTime     | date   | No       | RFC3339 formatted time to end report
+countryCode | string | No       | 'us' or 'eu', used for formatting Dates in pdf response, defaults to us format
 
 
 ## Get Patient Recordings
