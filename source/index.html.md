@@ -269,7 +269,7 @@ Responds to `GET` requests to `/v1/teamConnectionTemplate` returns a template id
 > Example Request
 
 ```shell
-curl https://api.kardia.com/v1/patients/{:id}/summaryReport?startTime=2021-03-15T15:04:05Z&endTime=2021-04-07T15:04:05Z&countryCode=us
+curl https://api.kardia.com/v1/patients/{:id}/summaryReport?startTime=2021-03-15T15:04:05Z&endTime=2021-04-07T15:04:05Z&dateFormat=us
  -u YOUR-API-KEY:
 ```
 
@@ -285,7 +285,7 @@ Name        | Type   | Required | Description
 id          | string | Yes      | Unique id for patient
 startTime   | date   | No       | RFC3339 formatted time to start report
 endTime     | date   | No       | RFC3339 formatted time to end report
-countryCode | string | No       | 'us' or 'eu', used for formatting Dates in pdf response, defaults to us format
+dateFormat  | string | No       | 'us' or 'iso', used for formatting Dates in pdf response, defaults to us format
 
 
 ## Get Patient Recordings
