@@ -1324,21 +1324,68 @@ is specified. Valid error types are <code>poorQuality</code>, <code>undetermined
 
 <ul>
 <li>New recordings</li>
-<li>Patient connections</li>
+<li>Patient connections/disconnections</li>
 <li>Patient disconnects</li>
 <li>New QT Analysis Requests</li>
 </ul>
 
-<p>The Kardia server will send a post to your set url with the following body:</p>
+<p>The Kardia server will send a post to your set url with a json body:</p>
 
 <blockquote>
-<p>Example Body</p>
+<p>New Recording</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"eventType"</span><span class="p">:</span><span class="w">   </span><span class="s2">"qtAnalysis"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recordingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123recordingIDTest"</span><span class="p">,</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='set-callback-url'>Set callback URL</h2>
+
+<p><code>json New Recording
+{
+  &quot;eventType&quot;:   &quot;newRecording&quot;,
+  &quot;recordingId&quot;: &quot;123recordingIDTest&quot;,
+  &quot;patientId&quot;:   &quot;456patientID&quot;
+}
+</code>
+<code>json QT Analysis Request
+{
+  &quot;eventType&quot;:   &quot;qtAnalysis&quot;,
+  &quot;recordingId&quot;: &quot;123recordingIDTest&quot;
+}
+</code>
+<code>json QT Result Notification
+{
+  &quot;eventType&quot;:   &quot;qtResultNotification&quot;,
+  &quot;recordingId&quot;: &quot;123recordingIDTest&quot;,
+  &quot;patientId&quot;:   &quot;456patientID&quot;
+}
+</code>
+<code>json Vendor Specific Interpretation
+{
+  &quot;eventType&quot;:   &quot;newVendorSpecificInterpretation&quot;,
+  &quot;recordingId&quot;: &quot;123recordingIDTest&quot;,
+  &quot;patientId&quot;:   &quot;456patientID&quot;,
+  &quot;remarks&quot;:     &quot;notes here&quot;,
+  &quot;timestamp&quot;    &quot;1617927783&quot;
+}
+</code>
+<code>json Patient Connection/Disconnection
+{
+  &quot;eventType&quot;:            &quot;participantConnected&quot;, // OR &quot;participantDisconnected&quot;
+  &quot;patientId&quot;:            &quot;456patientID&quot;,
+  &quot;customParticipantId&quot;:  &quot;customPatientMRN&quot;
+}
+</code>
+<code>json Single Recording Updated
+{
+  &quot;eventType&quot;:      &quot;singleRecordingUpdated&quot;,
+  &quot;recordingId&quot;:    &quot;123recordingIDTest&quot;,
+  &quot;fieldsUpdated&quot;:  [&quot;note&quot;, &quot;tags_data&quot;] // only these 2 options currently supported in webhook
+}
+</code>
+<code>json Recording Added to Inbox
+{
+  &quot;eventType&quot;:  &quot;recordingInboxUpdated&quot;,
+  &quot;memberId&quot;:   &quot;doctorMemberId&quot;, // id of KardiaPro user who&#39;s inbox was updated
+  &quot;action&quot;:     &quot;trigger&quot;
+}
+</code></p>
+<h2 id='set-callback-url'>Set callback URL</h2>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
