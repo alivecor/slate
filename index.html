@@ -724,7 +724,7 @@ curl <span class="nt">-X</span> POST https://api.kardia.com/v1/apikey/new <span 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/<span class="o">{</span>:id<span class="o">}</span>/summaryReport?startTime<span class="o">=</span>2021-03-15T15:04:05Z&amp;endTime<span class="o">=</span>2021-04-07T15:04:05Z&amp;countryCode<span class="o">=</span>us
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.kardia.com/v1/patients/<span class="o">{</span>:id<span class="o">}</span>/summaryReport?startTime<span class="o">=</span>2021-03-15T15:04:05Z&amp;endTime<span class="o">=</span>2021-04-07T15:04:05Z&amp;dateFormat<span class="o">=</span>us
  <span class="nt">-u</span> YOUR-API-KEY:
 </code></pre></div>
 <blockquote>
@@ -760,10 +760,10 @@ curl <span class="nt">-X</span> POST https://api.kardia.com/v1/apikey/new <span 
 <td>RFC3339 formatted time to end report</td>
 </tr>
 <tr>
-<td>countryCode</td>
+<td>dateFormat</td>
 <td>string</td>
 <td>No</td>
-<td>&#39;us&#39; or &#39;eu&#39;, used for formatting Dates in pdf response, defaults to us format</td>
+<td>&#39;us&#39; or &#39;iso&#39;, used for formatting Dates in pdf response, defaults to us format</td>
 </tr>
 </tbody></table>
 <h2 id='get-patient-recordings'>Get Patient Recordings</h2>
