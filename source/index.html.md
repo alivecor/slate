@@ -702,19 +702,84 @@ patientId   | string | Yes      | The patient's unique identifier.
 Webhooks are a system of automated notifications indicating that an event has occurred for your team. Rather than requiring you to pull information via our API, webhooks push information to your destination when important events occur. Webhooks notify the following events.
 
 * New recordings
-* Patient connections
-* Patient disconnects
-* New QT Analysis Requests
+* Patient connections/disconnections
+* QT Analysis Requests/Results
+* Vendor Specific Interpretations
+* Updates to recordings
+* Recordings arriving in Kardia Pro member inboxes
 
-The Kardia server will send a post to your set url with the following body:
-> Example Body
+The Kardia server will send a post to your set url with a json body:
+> New Recording
+
+```json
+{
+  "eventType":   "newRecording",
+  "recordingId": "123recordingIDTest",
+  "patientId":   "456patientID"
+}
+```
+
+> QT Analysis Request
 
 ```json
 {
   "eventType":   "qtAnalysis",
-  "recordingId": "123recordingIDTest",
+  "recordingId": "123recordingIDTest"
 }
 ```
+
+> QT Result Notification
+
+```json
+{
+  "eventType":   "qtResultNotification",
+  "recordingId": "123recordingIDTest",
+  "patientId":   "456patientID"
+}
+```
+
+> Vendor Specific Interpretation
+
+```json
+{
+  "eventType":   "newVendorSpecificInterpretation",
+  "recordingId": "123recordingIDTest",
+  "patientId":   "456patientID",
+  "remarks":     "notes here",
+  "timestamp"    "1617927783"
+}
+```
+
+> Patient Connection/Disconnection
+
+```json 
+{
+  "eventType":            "participantConnected", // OR "participantDisconnected"
+  "patientId":            "456patientID",
+  "customParticipantId":  "customPatientMRN"
+}
+```
+
+> Single Recording Updated
+
+```json 
+{
+  "eventType":      "singleRecordingUpdated",
+  "recordingId":    "123recordingIDTest",
+  "fieldsUpdated":  ["note", "tags_data"] // only these 2 options currently supported in webhook
+}
+```
+
+> Recording Added to Inbox
+
+```json 
+{
+  "eventType":  "recordingInboxUpdated",
+  "memberId":   "doctorMemberId", // id of KardiaPro user who's inbox was updated
+  "action":     "trigger"
+}
+```
+
 
 ## Set callback URL
 
