@@ -867,7 +867,7 @@ This section provides examples of JSON request bodies that are sent to the callb
 > Example Request
 
 ```shell
-curl -X PUT https://api.kardia.com/v1/qtCallback \
+curl -X PUT https://api.kardia.com/service/v1/qtCallback \
   -u YOUR-API-KEY: \
   -d url=https://www.example.com/webhooks
 ```
@@ -880,14 +880,14 @@ curl -X PUT https://api.kardia.com/v1/qtCallback \
 }
 ```
 
-Lets you assign a callback URL for POST notifications. Make sure to assign a publicly accessible URL for your callback service. Responds to `PUT` requests to `/v1/qtCallback`.
+Lets you assign a callback URL for POST notifications. Make sure to assign a publicly accessible URL for your callback service. Responds to `PUT` requests to `service/v1/qtCallback`.
 
 ## Get QT Analysis Callback URL
 
 > Example Request
 
 ```shell
-curl https://api.kardia.com/v1/qtCallback \
+curl https://api.kardia.com/service/v1/qtCallback \
   -u YOUR-API-KEY:
 ```
 
